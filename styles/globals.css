@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0E1216;
+  --surface: #161C22;
+  --surface-2: #1D242B;
+  --border: #262F38;
+  --border-bright: #35404B;
+  --text: #E6EAEE;
+  --muted: #78848F;
+
+  /* Colour encodes compliance status. It is not decoration. */
+  --verified: #10B981;
+  --flag: #F5A524;
+  --critical: #F0553D;
+  --signal: #38BDF8;
+
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: var(--font-sans); cursor: pointer; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--signal); color: #0E1216; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+@keyframes spin {
+  from { transform: rotate(45deg); }
+  to   { transform: rotate(405deg); }
+}

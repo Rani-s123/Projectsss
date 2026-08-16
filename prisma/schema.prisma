@@ -1,0 +1,61 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model LedgerEntry {
+  id           String   @id @default(uuid())
+  seq          Int      @unique
+  timestamp    String
+  actor        String
+  event        String
+  documentId   String?
+  field        String?
+  previousHash String
+  hash         String
+  payloadJson  String
+  createdAt    DateTime @default(now())
+}
+
+model Batch {
+  id        String         @id
+  name      String
+  status    String
+  createdAt String
+  updatedAt String
+  items     DocumentItem[]
+}
+
+model DocumentItem {
+  id             String   @id
+  batchId        String
+  batch          Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  filename       String
+  docType        String
+  text           String
+  status         String
+  priority       Int
+  monetaryValue  Float
+  scanned        Boolean
+  escalated      Boolean
+  escalatedCount Int
+  ruleFailures   Int
+  createdAt      String
+  extractedJson  String?
+  triageJson     String?
+  finalizedJson  String?
+}
+
+model CalibrationSample {
+  id          String   @id @default(uuid())
+  field       String
+  docType     String
+  claimedConf Float
+  wasCorrect  Boolean
+  reviewer    String
+  timestamp   String
+  createdAt   DateTime @default(now())
+}

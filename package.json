@@ -1,0 +1,18 @@
+{
+  "name": "compliance-copilot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A human-in-the-loop AI agent that turns messy documents into compliant, auditable records — auto-approving what it is confident about and escalating what it is not.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "next": "14.2.35",
+    "prisma": "^5.22.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
